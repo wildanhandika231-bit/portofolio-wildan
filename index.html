@@ -45,6 +45,8 @@
         border-radius: 8px;
         padding: 1rem;
         background: var(--surface, #161616);
+        display: flex;
+        flex-direction: column;
       }
       .cert-img {
         width: 100%;
@@ -65,6 +67,19 @@
       .cert-issuer {
         font-size: 12px;
         color: var(--muted, #8a867e);
+        margin-bottom: 0.75rem;
+      }
+      .cert-link {
+        font-size: 12px;
+        color: var(--accent, #3b82f6);
+        text-decoration: none;
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .cert-link:hover {
+        text-decoration: underline;
       }
     </style>
 
@@ -194,14 +209,14 @@
             </div>
           </div>
 
-          <!-- Kolom 3 (Kolom Baru) -->
+          <!-- Kolom 3 -->
           <div>
             <div class="sub">pengalaman / proyek lainnya</div>
             <div class="timeline">
               <div class="tl-item">
                 <div class="tl-date">[Bulan 20XX – Bulan 20XX]</div>
                 <h3 class="tl-title">[Nama Posisi / Peran]</h3>
-                <div class="tl-org muted">[Nama Perusahaan / Perhitungan Organisasi], [Kota]</div>
+                <div class="tl-org muted">[Nama Perusahaan / Organisasi], [Kota]</div>
                 <ul class="tl-list">
                   <li>[Tugas atau tanggung jawab utama kamu di sini.]</li>
                   <li>[Hasil atau capaian yang diperoleh.]</li>
@@ -247,33 +262,53 @@
             </ul>
           </div>
 
-          <!-- Bagian Sertifikasi Dengan Gambar -->
+          <!-- Bagian Sertifikasi Dengan Foto & Tautan Bukti -->
           <div class="skill-col" style="grid-column: 1 / -1">
             <h3>sertifikasi &amp; pelatihan</h3>
             <div class="cert-grid">
               
               <div class="cert-card">
-                <img class="cert-img" src="assets/img/sertifikat-bnsp.jpg" alt="Sertifikat BNSP" loading="lazy" />
+                <a href="assets/img/sertifikat-bnsp.jpg" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-bnsp.jpg" alt="Sertifikat BNSP" loading="lazy" />
+                </a>
                 <div class="cert-title">BNSP: Rekayasa Integrasi Bangunan Cerdas</div>
                 <div class="cert-issuer">Badan Nasional Sertifikasi Profesi</div>
+                <a href="assets/img/sertifikat-bnsp.jpg" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
               </div>
 
               <div class="cert-card">
-                <img class="cert-img" src="assets/img/sertifikat-iot.jpg" alt="Sertifikat IoT" loading="lazy" />
+                <a href="assets/img/sertifikat-iot.jpg" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-iot.jpg" alt="Sertifikat IoT" loading="lazy" />
+                </a>
                 <div class="cert-title">Internet of Things (IoT)</div>
                 <div class="cert-issuer">[Penyelenggara Sertifikat]</div>
+                <a href="assets/img/sertifikat-iot.jpg" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
               </div>
 
               <div class="cert-card">
-                <img class="cert-img" src="assets/img/sertifikat-bas.jpg" alt="Sertifikat BAS" loading="lazy" />
+                <a href="assets/img/sertifikat-bas.jpg" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-bas.jpg" alt="Sertifikat BAS" loading="lazy" />
+                </a>
                 <div class="cert-title">Building Automation System (BAS)</div>
                 <div class="cert-issuer">[Penyelenggara Sertifikat]</div>
+                <a href="assets/img/sertifikat-bas.jpg" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
               </div>
 
               <div class="cert-card">
-                <img class="cert-img" src="assets/img/sertifikat-4.jpg" alt="Sertifikat Tambahan" loading="lazy" />
+                <a href="assets/img/sertifikat-4.jpg" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-4.jpg" alt="Sertifikat Tambahan" loading="lazy" />
+                </a>
                 <div class="cert-title">[Judul Sertifikat Kamu]</div>
                 <div class="cert-issuer">[Penerbit / Instansi]</div>
+                <a href="assets/img/sertifikat-4.jpg" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
               </div>
 
             </div>
@@ -282,7 +317,7 @@
       </div>
     </section>
 
-    <!-- ─── 6. PROYEK ─── -->
+    <!-- ─── 6. PROYEK (DENGAN BUKTI DOKUMENTASI) ─── -->
     <section id="proyek" class="section">
       <div class="container">
         <div class="label">proyek yang telah diselesaikan</div>
@@ -294,11 +329,14 @@
             <div class="tags"><span class="tag">PLC</span><span class="tag">HMI</span><span class="tag">sensor</span></div>
           </div>
           <div>
-            <img class="project-img" src="assets/img/proyek-1.svg" alt="Dokumentasi proyek 1" width="640" height="360" loading="lazy" />
+            <a href="assets/img/proyek-1.svg" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-1.svg" alt="Dokumentasi proyek 1" width="640" height="360" loading="lazy" />
+            </a>
             <p><b>Masalah:</b> [Apa yang ingin diselesaikan, mis. memilah barang berdasarkan jenis secara otomatis.]</p>
             <p><b>Peran &amp; solusi:</b> [Apa yang kamu kerjakan, mis. merancang wiring, memprogram ladder, membuat tampilan HMI.]</p>
             <p><b>Hasil:</b> [Angka atau bukti, mis. akurasi sortir 95%, dokumentasi lengkap.]</p>
-            <a href="[link-video-atau-github]">lihat dokumentasi ↗</a>
+            <!-- Ganti href dengan link Google Drive / Video Youtube / Github dokumentasi proyek -->
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
           </div>
         </article>
 
@@ -309,11 +347,13 @@
             <div class="tags"><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">dashboard</span></div>
           </div>
           <div>
-            <img class="project-img" src="assets/img/proyek-2.svg" alt="Dokumentasi proyek 2" width="640" height="360" loading="lazy" />
+            <a href="assets/img/proyek-2.svg" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-2.svg" alt="Dokumentasi proyek 2" width="640" height="360" loading="lazy" />
+            </a>
             <p><b>Masalah:</b> [Mis. pemakaian listrik sulit dipantau secara real time.]</p>
             <p><b>Peran &amp; solusi:</b> [Mis. merakit sensor arus/tegangan, memprogram ESP32, mengirim data ke dashboard.]</p>
             <p><b>Hasil:</b> [Mis. data tampil real time di ponsel dengan selisih ukur di bawah 3%.]</p>
-            <a href="[link-video-atau-github]">lihat dokumentasi ↗</a>
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
           </div>
         </article>
 
@@ -324,11 +364,13 @@
             <div class="tags"><span class="tag">inverter</span><span class="tag">motor 3 fasa</span><span class="tag">PLC</span></div>
           </div>
           <div>
-            <img class="project-img" src="assets/img/proyek-3.svg" alt="Dokumentasi proyek 3" width="640" height="360" loading="lazy" />
+            <a href="assets/img/proyek-3.svg" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-3.svg" alt="Dokumentasi proyek 3" width="640" height="360" loading="lazy" />
+            </a>
             <p><b>Masalah:</b> [Mis. kecepatan motor perlu diatur sesuai beban produksi.]</p>
             <p><b>Peran &amp; solusi:</b> [Mis. mengatur parameter inverter dan membuat kontrol dari PLC.]</p>
             <p><b>Hasil:</b> [Mis. kecepatan bisa diatur 0–1500 rpm dengan respon stabil.]</p>
-            <a href="[link-video-atau-github]">lihat dokumentasi ↗</a>
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
           </div>
         </article>
       </div>
