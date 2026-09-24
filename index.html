@@ -14,10 +14,62 @@
     <!-- setelah deploy, ganti og:image dengan URL penuh, mis. https://domainmu.com/assets/img/og-image.png -->
     <meta property="og:image" content="assets/img/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    
+    <style>
+      body, button, input, select, textarea {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      em {
+        font-style: normal;
+      }
+      /* Penyesuaian layout 3 kolom untuk bagian pengalaman */
+      .three-col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      @media (max-width: 900px) {
+        .three-col {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Penyesuaian grid sertifikat bergambar */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      .cert-card {
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        border-radius: 8px;
+        padding: 1rem;
+        background: var(--surface, #161616);
+      }
+      .cert-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        margin-bottom: 0.75rem;
+        background: #222;
+      }
+      .cert-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text, #f0ede8);
+        margin-bottom: 0.25rem;
+      }
+      .cert-issuer {
+        font-size: 12px;
+        color: var(--muted, #8a867e);
+      }
+    </style>
+
     <link rel="stylesheet" href="css/style.css" />
-      <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js-anim");</script>
+    <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js-anim");</script>
   </head>
 
   <body>
@@ -46,7 +98,7 @@
         <p class="hero-role">Saya mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta</p>
         <p class="hero-desc">
           yang memiliki ketertarikan pada bidang elektronika dasar, sistem kelistrikan, dan troubleshooting peralatan,
-          dengan pengalaman di sistem monitoring dan instrumentasi berbasis sensor.Saya senang mempelajari sesuatu hal yang baru dalam elektronika 
+          dengan pengalaman di sistem monitoring dan instrumentasi berbasis sensor. Saya senang mempelajari sesuatu hal yang baru dalam elektronika.
         </p>
         <div class="actions">
           <a href="#proyek" class="btn btn-main">lihat proyek</a>
@@ -74,10 +126,7 @@
           </div>
           <div>
             <p class="about-p">
-              <span>Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta
-            </p>
-            <p class="about-p">
-         .</span>
+              <span>Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta</span>.
             </p>
           </div>
         </div>
@@ -90,9 +139,9 @@
         <div class="label">riwayat pendidikan</div>
         <div class="timeline">
           <div class="tl-item">
-            <div class="tl-date">[2021 – 2024]</div>
-            <h3 class="tl-title">SMK Jurusan [Teknik Elektronika Industri]</h3>
-            <div class="tl-org muted">[SMK Negeri 4 Depok]</div>
+            <div class="tl-date">2021 – 2024</div>
+            <h3 class="tl-title">SMK Teknik Elektronika Industri</h3>
+            <div class="tl-org muted">SMK Negeri 4 Depok</div>
             <ul class="tl-list">
             </ul>
           </div>
@@ -107,35 +156,55 @@
       </div>
     </section>
 
-    <!-- ─── 4. PENGALAMAN MAGANG ─── -->
+    <!-- ─── 4. PENGALAMAN MAGANG (3 KOLOM) ─── -->
     <section id="magang" class="section">
       <div class="container">
-        <div class="label">pengalaman magang</div>
-        <div class="two-col">
+        <div class="label">pengalaman magang &amp; kerja</div>
+        <div class="three-col">
+          <!-- Kolom 1 -->
           <div>
             <div class="sub">masa sekolah (pkl smk)</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date">[februari 2023 – april 2023]</div>
-                <h3 class="tl-title">[Maintenace Elektrical]</h3>
-                <div class="tl-org muted">[PT PLN PERSERO], [Pulogadung]</div>
+                <div class="tl-date">Februari 2023 – April 2023</div>
+                <h3 class="tl-title">Maintenance Electrical</h3>
+                <div class="tl-org muted">PT PLN (Persero), Pulogadung</div>
                 <ul class="tl-list">
-                  <li>[Tugas utama, Pengecekan Baterai.]</li>
-                  <li>[hasil yang dicapai,dapat membuat sensor fingerprint untuk menyalakan motor menggunakan sensor R503.]</li>
+                  <li>Tugas utama: Pengecekan Baterai.</li>
+                  <li>Hasil yang dicapai: dapat membuat sensor fingerprint untuk menyalakan motor menggunakan sensor R503.</li>
                 </ul>
               </div>
             </div>
           </div>
+
+          <!-- Kolom 2 -->
           <div>
             <div class="sub">masa kuliah (magang)</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date">[Agustus 2026– Desember 2026]</div>
-                <h3 class="tl-title">[OJT Facility Maintenance]</h3>
-                <div class="tl-org muted">[PT Angkasa Pura Indonesia], [Jakarta timur,Bandara Halim Perdana Kusuma]</div>
+                <div class="tl-date">Agustus 2026 – Desember 2026</div>
+                <h3 class="tl-title">OJT Facility Maintenance</h3>
+                <div class="tl-org muted">PT Angkasa Pura Indonesia, Bandara Halim Perdanakusuma</div>
                 <ul class="tl-list">
-                  <li>[Tugas utama, kegiatan preventive maintenance X-RAY & WTMD(Walk Trough Metal Detector, Pengecekan 
-                    harian peralatan elektronika dan IT di Area Bandara Halik PK, dan melakukan pengecekan resolusi dan konfigurasi resolusi pada cctv) .]</li>
+                  <li>Tugas utama: Kegiatan preventive maintenance X-RAY &amp; WTMD (Walk Through Metal Detector).</li>
+                  <li>Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK.</li>
+                  <li>Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 3 (Kolom Baru) -->
+          <div>
+            <div class="sub">pengalaman / proyek lainnya</div>
+            <div class="timeline">
+              <div class="tl-item">
+                <div class="tl-date">[Bulan 20XX – Bulan 20XX]</div>
+                <h3 class="tl-title">[Nama Posisi / Peran]</h3>
+                <div class="tl-org muted">[Nama Perusahaan / Perhitungan Organisasi], [Kota]</div>
+                <ul class="tl-list">
+                  <li>[Tugas atau tanggung jawab utama kamu di sini.]</li>
+                  <li>[Hasil atau capaian yang diperoleh.]</li>
                 </ul>
               </div>
             </div>
@@ -144,8 +213,7 @@
       </div>
     </section>
 
-    <!-- ─── 5. BIDANG KEAHLIAN ─── -->
-    <!-- Ganti isi daftar sesuai kemampuan yang benar-benar kamu kuasai -->
+    <!-- ─── 5. BIDANG KEAHLIAN & SERTIFIKASI ─── -->
     <section id="keahlian" class="section">
       <div class="container">
         <div class="label">bidang keahlian</div>
@@ -153,6 +221,9 @@
           <div class="skill-col">
             <h3>otomasi industri</h3>
             <ul>
+              <li>SCADA</li>
+              <li>PLC dasar</li>
+              <li>DCS</li>
             </ul>
           </div>
           <div class="skill-col">
@@ -175,20 +246,43 @@
               <li>Manajemen waktu</li>
             </ul>
           </div>
+
+          <!-- Bagian Sertifikasi Dengan Gambar -->
           <div class="skill-col" style="grid-column: 1 / -1">
-            <h3>sertifikasi</h3>
-            <ul>
-              <li>Sertifikat BNSP: Rekayasa Integrasi Bangunan Cerdas</li>
-              <li>Internet of Things</li>
-              <li>Software dan monitoring sistem</li>
-              <li>Building Automation System (BAS)</li>
-            </ul>
+            <h3>sertifikasi &amp; pelatihan</h3>
+            <div class="cert-grid">
+              
+              <div class="cert-card">
+                <img class="cert-img" src="assets/img/sertifikat-bnsp.jpg" alt="Sertifikat BNSP" loading="lazy" />
+                <div class="cert-title">BNSP: Rekayasa Integrasi Bangunan Cerdas</div>
+                <div class="cert-issuer">Badan Nasional Sertifikasi Profesi</div>
+              </div>
+
+              <div class="cert-card">
+                <img class="cert-img" src="assets/img/sertifikat-iot.jpg" alt="Sertifikat IoT" loading="lazy" />
+                <div class="cert-title">Internet of Things (IoT)</div>
+                <div class="cert-issuer">[Penyelenggara Sertifikat]</div>
+              </div>
+
+              <div class="cert-card">
+                <img class="cert-img" src="assets/img/sertifikat-bas.jpg" alt="Sertifikat BAS" loading="lazy" />
+                <div class="cert-title">Building Automation System (BAS)</div>
+                <div class="cert-issuer">[Penyelenggara Sertifikat]</div>
+              </div>
+
+              <div class="cert-card">
+                <img class="cert-img" src="assets/img/sertifikat-4.jpg" alt="Sertifikat Tambahan" loading="lazy" />
+                <div class="cert-title">[Judul Sertifikat Kamu]</div>
+                <div class="cert-issuer">[Penerbit / Instansi]</div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── 6. PROYEK (3 proyek) ─── -->
+    <!-- ─── 6. PROYEK ─── -->
     <section id="proyek" class="section">
       <div class="container">
         <div class="label">proyek yang telah diselesaikan</div>
