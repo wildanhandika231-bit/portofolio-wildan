@@ -16,11 +16,14 @@
   /* ─── 2. SCROLLSPY (MENU AKTIF SESUAI BAGIAN) ─── */
   const links = $(".nav-links a");
   const spy = new IntersectionObserver(
-    (es) => es.forEach((e) => {
-      if (e.isIntersecting) {
-        links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
-      }
-    }),
+    (es) =>
+      es.forEach((e) => {
+        if (e.isIntersecting) {
+          links.forEach((a) =>
+            a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)
+          );
+        }
+      }),
     { rootMargin: "-45% 0px -50% 0px" }
   );
   $("section[id]").forEach((sec) => spy.observe(sec));
@@ -49,7 +52,7 @@
 
       document.documentElement.lang = currentLang;
 
-      // Reset animasi typing agar langsung ganti bahasa
+      // Reset posisi animasi typing agar langsung menyesuaikan bahasa baru
       li = 0;
       ci = 0;
       del = false;
@@ -75,49 +78,51 @@
     });
   }
 
-  // Running Text / Typewriter (HANYA NAMA DAN INSTANSI)
-  const role = document.querySelector(".hero-role");
+  // Running Text / Typewriter Target
+  const typewriterEl = document.getElementById("typewriter");
   const linesData = {
     id: [
-      "Muhammad Wildan Handika",
-      "Politeknik Negeri Jakarta"
+      "Elektronika Industri",
+      "Sistem Kontrol & Instrumentasi",
+      "Otomasi Industri & Mikrokontroler"
     ],
     en: [
-      "Muhammad Wildan Handika",
-      "Jakarta State Polytechnic"
+      "Industrial Electronics",
+      "Control System & Instrumentation",
+      "Industrial Automation & Microcontroller"
     ]
   };
 
-  let li = 0, ci = 0, del = false;
+  let li = 0,
+    ci = 0,
+    del = false;
 
-  if (role) {
-    role.textContent = "";
-    role.classList.add("typing");
-
+  if (typewriterEl) {
     const tick = () => {
       const currentLines = linesData[currentLang];
       const line = currentLines[li % currentLines.length];
 
       ci += del ? -1 : 1;
-      role.textContent = line.slice(0, ci);
+      typewriterEl.textContent = line.slice(0, ci);
 
-      let wait = del ? 22 : 48;
+      let wait = del ? 25 : 55;
       if (!del && ci === line.length) {
         del = true;
-        wait = 1900;
+        wait = 2000; // Waktu jeda saat teks selesai diketik
       } else if (del && ci === 0) {
         del = false;
         li = (li + 1) % currentLines.length;
-        wait = 350;
+        wait = 400; // Waktu jeda sebelum mengetik kalimat berikutnya
       }
       setTimeout(tick, wait);
     };
-    setTimeout(tick, 800);
+    setTimeout(tick, 600);
   }
 
   // Count Up IPK
   const countUp = (n) => {
-    const to = parseFloat(n.dataset.count), t0 = performance.now();
+    const to = parseFloat(n.dataset.count),
+      t0 = performance.now();
     const f = (t) => {
       const k = Math.min((t - t0) / 1200, 1);
       n.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(2);
@@ -127,19 +132,24 @@
   };
 
   // Scroll Reveal Animations
-  $(".label, .sub, .profile-grid > div, .tl-item, .skill-col, .project, .contact-head, .contact-email, .social").forEach((el) => {
+  $(
+    ".label, .sub, .profile-grid > div, .tl-item, .skill-col, .project, .campus-card, .contact-head, .contact-email, .social"
+  ).forEach((el) => {
     el.classList.add("reveal");
-    const sibs = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
+    const sibs = [...el.parentElement.children].filter((c) =>
+      c.classList.contains("reveal")
+    );
     el.style.setProperty("--d", Math.min(sibs.indexOf(el) * 90, 360) + "ms");
   });
 
   const io = new IntersectionObserver(
-    (es) => es.forEach((e) => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("in");
-      io.unobserve(e.target);
-      $("[data-count]", e.target).forEach(countUp);
-    }),
+    (es) =>
+      es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+        $("[data-count]", e.target).forEach(countUp);
+      }),
     { threshold: 0.15 }
   );
 
