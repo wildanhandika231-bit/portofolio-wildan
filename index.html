@@ -8,6 +8,80 @@
     <meta name="author" content="Muhammad Wildan Handika" />
     <meta name="theme-color" content="#0e0e0e" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Muhammad Wildan Handika — Elektronika Industri" />
+    <meta property="og:description" content="Portofolio mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta." />
+    <meta property="og:image" content="assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <style>
+      body, button, input, select, textarea {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      em {
+        font-style: normal;
+      }
+      /* Layout 3 Kolom untuk Pengalaman */
+      .three-col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      @media (max-width: 900px) {
+        .three-col {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Grid 2 Sertifikat Bergambar */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      .cert-card {
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        border-radius: 8px;
+        padding: 1rem;
+        background: var(--surface, #161616);
+        display: flex;
+        flex-direction: column;
+      }
+      .cert-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        margin-bottom: 0.75rem;
+        background: #222;
+      }
+      .cert-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text, #f0ede8);
+        margin-bottom: 0.25rem;
+      }
+      .cert-issuer {
+        font-size: 12px;
+        color: var(--muted, #8a867e);
+        margin-bottom: 0.75rem;
+      }
+      .cert-link {
+        font-size: 12px;
+        color: var(--accent, #3b82f6);
+        text-decoration: none;
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .cert-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+
     <link rel="stylesheet" href="css/style.css" />
     <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js-anim");</script>
   </head>
@@ -18,17 +92,13 @@
       <div class="nav-inner">
         <a href="#beranda" class="logo">wildan.handika</a>
         <ul class="nav-links">
-          <li><a href="#profil" data-id="profil" data-en="profile">profil</a></li>
-          <li><a href="#pendidikan" data-id="pendidikan" data-en="education">pendidikan</a></li>
-          <li><a href="#magang" data-id="magang" data-en="internship">magang</a></li>
-          <li><a href="#keahlian" data-id="keahlian" data-en="skills">keahlian</a></li>
-          <li><a href="#proyek" data-id="proyek" data-en="projects">proyek</a></li>
-          <li><a href="#kontak" data-id="kontak" data-en="contact">kontak</a></li>
+          <li><a href="#profil">profil</a></li>
+          <li><a href="#pendidikan">pendidikan</a></li>
+          <li><a href="#magang">magang</a></li>
+          <li><a href="#keahlian">keahlian</a></li>
+          <li><a href="#proyek">proyek</a></li>
+          <li><a href="#kontak">kontak</a></li>
         </ul>
-        <!-- Tombol Switch Bahasa -->
-        <button id="lang-toggle" class="lang-btn" aria-label="Ganti Bahasa">
-          <span id="lang-label">EN</span>
-        </button>
       </div>
     </nav>
 
@@ -37,22 +107,21 @@
       <div class="glow" aria-hidden="true"></div>
       <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path /><path /></svg>
       <div class="container hero">
-        <p class="greeting" data-id="halo, saya" data-en="hello, I am">halo, saya</p>
+        <p class="greeting">halo, saya</p>
         <h1 class="hero-title">Muhammad<br /><em>Wildan Handika.</em></h1>
         
-        <!-- Running Text / Typewriter -->
-        <div class="typewriter-container">
-          <span class="typewriter-text" id="typewriter"></span><span class="cursor">&nbsp;</span>
-        </div>
-
-        <p class="hero-role" data-id="Mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta" data-en="Industrial Electronics Student at Jakarta State Polytechnic">
-          Mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta
+        <!-- Wadah untuk animasi ketik JS (Nama & Instansi) -->
+        <p class="hero-role"></p>
+        
+        <!-- Deskripsi singkat terpisah -->
+        <p class="hero-desc">
+          Saya mahasiswa D3 Elektronika Industri Politeknik Negeri Jakarta yang memiliki ketertarikan pada bidang elektronika dasar, sistem kelistrikan, dan troubleshooting peralatan, dengan pengalaman di sistem monitoring dan instrumentasi berbasis sensor. Saya senang mempelajari hal baru dalam elektronika.
         </p>
         
         <div class="actions">
-          <a href="#proyek" class="btn btn-main" data-id="lihat proyek" data-en="view projects">lihat proyek</a>
-          <a href="#kontak" class="btn" data-id="hubungi saya" data-en="contact me">hubungi saya</a>
-          <a href="assets/cv/CV_WILDAN.pdf" class="btn" data-id="unduh cv" data-en="download cv">unduh cv</a>
+          <a href="#proyek" class="btn btn-main">lihat proyek</a>
+          <a href="#kontak" class="btn">hubungi saya</a>
+          <a href="assets/cv/CV_WILDAN.pdf" class="btn">unduh cv</a>
         </div>
       </div>
     </section>
@@ -60,22 +129,22 @@
     <!-- ─── 2. PROFIL ─── -->
     <section id="profil" class="section">
       <div class="container">
-        <div class="label" data-id="profil" data-en="profile">profil</div>
+        <div class="label">profil</div>
         <div class="profile-grid">
           <div>
             <img class="foto" src="assets/img/foto-profil.jpg" alt="Foto Muhammad Wildan Handika" width="150" height="188" loading="lazy" />
             <div class="profile-name">Muhammad<br /><em>Wildan Handika.</em></div>
             <dl class="facts">
-              <dt data-id="kampus" data-en="campus">kampus</dt><dd>Politeknik Negeri Jakarta</dd>
-              <dt data-id="prodi" data-en="major">prodi</dt><dd data-id="D3 Elektronika Industri, Teknik Elektro" data-en="Diploma in Industrial Electronics, Electrical Engineering">D3 Elektronika Industri, Teknik Elektro</dd>
-              <dt data-id="kuliah sejak" data-en="enrolled">kuliah sejak</dt><dd>2024</dd>
+              <dt>kampus</dt><dd>Politeknik Negeri Jakarta</dd>
+              <dt>prodi</dt><dd>D3 Elektronika Industri, Teknik Elektro</dd>
+              <dt>kuliah sejak</dt><dd>2024</dd>
               <dt>ipk</dt><dd><span data-count="3.63">3.63</span> / 4.00</dd>
-              <dt data-id="domisili" data-en="domicile">domisili</dt><dd>Mekarsari, Cimanggis, Depok, Jawa Barat</dd>
+              <dt>domisili</dt><dd>Mekarsari, Cimanggis, Depok, Jawa Barat</dd>
             </dl>
           </div>
           <div>
             <p class="about-p">
-              <span data-id="Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta" data-en="Industrial Electronics student at Jakarta State Polytechnic">Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta</span>.
+              <span>Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta</span>.
             </p>
           </div>
         </div>
@@ -85,19 +154,21 @@
     <!-- ─── 3. RIWAYAT PENDIDIKAN ─── -->
     <section id="pendidikan" class="section">
       <div class="container">
-        <div class="label" data-id="riwayat pendidikan" data-en="education history">riwayat pendidikan</div>
+        <div class="label">riwayat pendidikan</div>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">2021 – 2024</div>
-            <h3 class="tl-title" data-id="SMK Teknik Elektronika Industri" data-en="Vocational High School - Industrial Electronics">SMK Teknik Elektronika Industri</h3>
+            <h3 class="tl-title">SMK Teknik Elektronika Industri</h3>
             <div class="tl-org muted">SMK Negeri 4 Depok</div>
-            <ul class="tl-list"></ul>
+            <ul class="tl-list">
+            </ul>
           </div>
           <div class="tl-item now">
-            <div class="tl-date" data-id="2024 – sekarang" data-en="2024 – present">2024 – sekarang</div>
-            <h3 class="tl-title" data-id="D3 Elektronika Industri" data-en="Diploma in Industrial Electronics">D3 Elektronika Industri</h3>
+            <div class="tl-date">2024 – sekarang</div>
+            <h3 class="tl-title">D3 Elektronika Industri</h3>
             <div class="tl-org muted">Politeknik Negeri Jakarta · IPK 3.63 / 4.00</div>
-            <ul class="tl-list"></ul>
+            <ul class="tl-list">
+            </ul>
           </div>
         </div>
       </div>
@@ -106,19 +177,19 @@
     <!-- ─── 4. PENGALAMAN MAGANG (3 KOLOM) ─── -->
     <section id="magang" class="section">
       <div class="container">
-        <div class="label" data-id="pengalaman magang & kerja" data-en="internship & work experience">pengalaman magang &amp; kerja</div>
+        <div class="label">pengalaman magang &amp; kerja</div>
         <div class="three-col">
           <!-- Kolom 1 -->
           <div>
-            <div class="sub" data-id="masa sekolah (pkl smk)" data-en="high school internship">masa sekolah (pkl smk)</div>
+            <div class="sub">masa sekolah (pkl smk)</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date" data-id="Februari 2023 – April 2023" data-en="February 2023 – April 2023">Februari 2023 – April 2023</div>
+                <div class="tl-date">Februari 2023 – April 2023</div>
                 <h3 class="tl-title">Maintenance Electrical</h3>
                 <div class="tl-org muted">PT PLN (Persero), Pulogadung</div>
                 <ul class="tl-list">
-                  <li data-id="Tugas utama: Pengecekan Baterai." data-en="Main duty: Battery Checking.">Tugas utama: Pengecekan Baterai.</li>
-                  <li data-id="Hasil yang dicapai: dapat membuat sensor fingerprint untuk menyalakan motor menggunakan sensor R503." data-en="Achievement: Successfully created a fingerprint sensor system to start a motorcycle using the R503 sensor.">Hasil yang dicapai: dapat membuat sensor fingerprint untuk menyalakan motor menggunakan sensor R503.</li>
+                  <li>Tugas utama: Pengecekan Baterai.</li>
+                  <li>Hasil yang dicapai: dapat membuat sensor fingerprint untuk menyalakan motor menggunakan sensor R503.</li>
                 </ul>
               </div>
             </div>
@@ -126,16 +197,16 @@
 
           <!-- Kolom 2 -->
           <div>
-            <div class="sub" data-id="masa kuliah (magang)" data-en="college internship">masa kuliah (magang)</div>
+            <div class="sub">masa kuliah (magang)</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date" data-id="Agustus 2026 – Desember 2026" data-en="August 2026 – December 2026">Agustus 2026 – Desember 2026</div>
+                <div class="tl-date">Agustus 2026 – Desember 2026</div>
                 <h3 class="tl-title">OJT Facility Maintenance</h3>
                 <div class="tl-org muted">PT Angkasa Pura Indonesia, Bandara Halim Perdanakusuma</div>
                 <ul class="tl-list">
-                  <li data-id="Tugas utama: Kegiatan preventive maintenance X-RAY & WTMD (Walk Through Metal Detector)." data-en="Main duty: Preventive maintenance for X-RAY & WTMD (Walk Through Metal Detector).">Tugas utama: Kegiatan preventive maintenance X-RAY &amp; WTMD (Walk Through Metal Detector).</li>
-                  <li data-id="Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK." data-en="Daily inspection of electronic and IT equipment at Halim PK Airport.">Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK.</li>
-                  <li data-id="Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV." data-en="Checking resolution and configuring settings for CCTV cameras.">Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV.</li>
+                  <li>Tugas utama: Kegiatan preventive maintenance X-RAY &amp; WTMD (Walk Through Metal Detector).</li>
+                  <li>Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK.</li>
+                  <li>Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV.</li>
                 </ul>
               </div>
             </div>
@@ -143,7 +214,7 @@
 
           <!-- Kolom 3 -->
           <div>
-            <div class="sub" data-id="pengalaman / proyek lainnya" data-en="other experiences / projects">pengalaman / proyek lainnya</div>
+            <div class="sub">pengalaman / proyek lainnya</div>
             <div class="timeline">
               <div class="tl-item">
                 <div class="tl-date">[Bulan 20XX – Bulan 20XX]</div>
@@ -160,144 +231,141 @@
       </div>
     </section>
 
-    <!-- ─── 5. BIDANG KEAHLIAN & SERTIFIKASI ─── -->
+    <!-- ─── 5. BIDANG KEAHLIAN & SERTIFIKASI (2 SERTIFIKAT) ─── -->
     <section id="keahlian" class="section">
       <div class="container">
-        <div class="label" data-id="bidang keahlian" data-en="skills & expertise">bidang keahlian</div>
+        <div class="label">bidang keahlian</div>
         <div class="skills-grid">
           <div class="skill-col">
-            <h3 data-id="otomasi industri" data-en="industrial automation">otomasi industri</h3>
+            <h3>otomasi industri</h3>
             <ul>
               <li>SCADA</li>
-              <li data-id="PLC dasar" data-en="Basic PLC">PLC dasar</li>
+              <li>PLC dasar</li>
               <li>DCS</li>
             </ul>
           </div>
           <div class="skill-col">
-            <h3 data-id="elektronika & instrumentasi" data-en="electronics & instrumentation">elektronika &amp; instrumentasi</h3>
+            <h3>elektronika &amp; instrumentasi</h3>
             <ul>
-              <li data-id="Elektronika dasar" data-en="Basic Electronics">Elektronika dasar</li>
-              <li data-id="Instrumentasi dasar dan industri" data-en="Basic & Industrial Instrumentation">Instrumentasi dasar dan industri</li>
-              <li data-id="Sistem monitoring berbasis sensor" data-en="Sensor-based Monitoring Systems">Sistem monitoring berbasis sensor</li>
-              <li data-id="Desain PCB dasar (EasyEDA)" data-en="Basic PCB Design (EasyEDA)">Desain PCB dasar (EasyEDA)</li>
-              <li data-id="Troubleshooting peralatan" data-en="Equipment Troubleshooting">Troubleshooting peralatan</li>
+              <li>Elektronika dasar</li>
+              <li>Instrumentasi dasar dan industri</li>
+              <li>Sistem monitoring berbasis sensor</li>
+              <li>Desain PCB dasar (EasyEDA)</li>
+              <li>Troubleshooting peralatan</li>
             </ul>
           </div>
           <div class="skill-col">
-            <h3 data-id="gambar teknik & sikap kerja" data-en="technical drawing & soft skills">gambar teknik &amp; sikap kerja</h3>
+            <h3>gambar teknik &amp; sikap kerja</h3>
             <ul>
-              <li data-id="Gambar teknik listrik (AutoCAD)" data-en="Electrical Drawing (AutoCAD)">Gambar teknik listrik (AutoCAD)</li>
-              <li data-id="Kerja sama tim" data-en="Teamwork">Kerja sama tim</li>
-              <li data-id="Berpikir analitis" data-en="Analytical Thinking">Berpikir analitis</li>
-              <li data-id="Pemecahan masalah" data-en="Problem Solving">Pemecahan masalah</li>
-              <li data-id="Manajemen waktu" data-en="Time Management">Manajemen waktu</li>
+              <li>Gambar teknik listrik (AutoCAD)</li>
+              <li>Kerja sama tim</li>
+              <li>Berpikir analitis</li>
+              <li>Pemecahan masalah</li>
+              <li>Manajemen waktu</li>
             </ul>
           </div>
 
-          <!-- Sertifikasi -->
+          <!-- Bagian Sertifikasi (2 Kartu PNG) -->
           <div class="skill-col" style="grid-column: 1 / -1">
-            <h3 data-id="sertifikasi & pelatihan" data-en="certifications & training">sertifikasi &amp; pelatihan</h3>
+            <h3>sertifikasi &amp; pelatihan</h3>
             <div class="cert-grid">
+              
               <div class="cert-card">
                 <a href="assets/img/sertifikat-1.png" target="_blank" rel="noopener">
                   <img class="cert-img" src="assets/img/sertifikat-1.png" alt="Sertifikat 1" loading="lazy" />
                 </a>
                 <div class="cert-title">BNSP: Rekayasa Integrasi Bangunan Cerdas</div>
                 <div class="cert-issuer">Badan Nasional Sertifikasi Profesi</div>
-                <a href="assets/img/sertifikat-1.png" target="_blank" rel="noopener" class="cert-link" data-id="Lihat Bukti Sertifikat ↗" data-en="View Certificate ↗">
+                <a href="assets/img/sertifikat-1.png" target="_blank" rel="noopener" class="cert-link">
                   Lihat Bukti Sertifikat ↗
                 </a>
               </div>
+
+              <div class="cert-card">
+                <a href="assets/img/sertifikat-2.png" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-2.png" alt="Sertifikat 2" loading="lazy" />
+                </a>
+                <div class="cert-title">Internet of Things (IoT) &amp; BAS</div>
+                <div class="cert-issuer">[Penyelenggara Sertifikat]</div>
+                <a href="assets/img/sertifikat-2.png" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── 6. PROYEK KAMPUS ─── -->
+    <!-- ─── 6. PROYEK (PNG) ─── -->
     <section id="proyek" class="section">
       <div class="container">
-        <div class="label" data-id="proyek & interaksi kampus" data-en="campus projects & involvement">proyek &amp; interaksi kampus</div>
+        <div class="label">proyek yang telah diselesaikan</div>
 
-        <div class="campus-card">
-          <!-- Header Kampus -->
-          <div class="campus-header">
-            <img class="campus-logo" src="assets/img/logo-pnj.png" alt="Logo PNJ" />
-            <div class="campus-info">
-              <h2>Politeknik Negeri Jakarta</h2>
-              <p data-id="Teknik Elektronika Industri" data-en="Industrial Electronics Engineering">Teknik Elektronika Industri</p>
-              <div class="campus-badges">
-                <span class="badge" data-id="📅 2024 - sekarang" data-en="📅 2024 - present">📅 2024 - sekarang</span>
-                <span class="badge badge-ipk">🔖 IPK: 3.63</span>
-              </div>
-            </div>
+        <article class="project">
+          <div>
+            <h3>[Sistem Konveyor Sortir Otomatis]</h3>
+            <div class="muted">[2025] · [Proyek kuliah / tim 3 orang]</div>
+            <div class="tags"><span class="tag">PLC</span><span class="tag">HMI</span><span class="tag">sensor</span></div>
           </div>
-
-          <!-- Pengalaman Organisasi -->
-          <div class="org-section">
-            <div class="org-section-title" data-id="👥 PENGALAMAN ORGANISASI" data-en="👥 ORGANIZATIONAL EXPERIENCE">
-              <span>👥</span> PENGALAMAN ORGANISASI
-            </div>
-            <div class="org-card">
-              <img class="org-logo" src="assets/img/logo-ksm.png" alt="KSM Psychorobotic" />
-              <div class="org-details">
-                <h4>KSM Psychorobotic</h4>
-                <div class="role" data-id="Staff" data-en="Staff Member">Staff</div>
-                <p data-id="Merekrut anggota yang akan mengikuti perlombaan" data-en="Recruiting members to participate in competitions">Merekrut anggota yang akan mengikuti perlombaan</p>
-              </div>
-            </div>
+          <div>
+            <a href="assets/img/proyek-1.png" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-1.png" alt="Dokumentasi proyek 1" width="640" height="360" loading="lazy" />
+            </a>
+            <p><b>Masalah:</b> [Apa yang ingin diselesaikan, mis. memilah barang berdasarkan jenis secara otomatis.]</p>
+            <p><b>Peran &amp; solusi:</b> [Apa yang kamu kerjakan, mis. merancang wiring, memprogram ladder, membuat tampilan HMI.]</p>
+            <p><b>Hasil:</b> [Angka atau bukti, mis. akurasi sortir 95%, dokumentasi lengkap.]</p>
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
           </div>
+        </article>
 
-          <!-- Proyek Kampus -->
-          <div class="org-section" style="margin-bottom: 0;">
-            <div class="org-section-title" data-id="📁 PROYEK KAMPUS" data-en="📁 CAMPUS PROJECTS">
-              <span>📁</span> PROYEK KAMPUS
-            </div>
-            <div class="campus-projects-box">
-              <ul class="project-list-items">
-                <li>
-                  <h4 data-id="Sistem Antrian Berbasis Arduino" data-en="Arduino-Based Queue System">Sistem Antrian Berbasis Arduino</h4>
-                  <p data-id="Mengintegrasikan 8-bit priority encoder dan display TM1637 untuk pencetak nomor antrean." data-en="Integrating an 8-bit priority encoder and TM1637 display for queue number printing.">Mengintegrasikan 8-bit priority encoder dan display TM1637 untuk pencetak nomor antrean.</p>
-                </li>
-                <li>
-                  <h4 data-id="Oven Fermentasi Pintar Berbasis PID dan Fuzzy" data-en="Smart Fermentation Oven Based on PID and Fuzzy">Oven Fermentasi Pintar Berbasis PID dan Fuzzy</h4>
-                  <p data-id="Merancang skematik dan tata letak PCB menggunakan KiCAD, Serta pembuatan dan tunning firmware kontroller PID dan Fuzzy." data-en="Designing schematics and PCB layout using KiCAD, along with firmware development and tuning for PID and Fuzzy controllers.">Merancang skematik dan tata letak PCB menggunakan KiCAD, Serta pembuatan dan tunning firmware kontroller PID dan Fuzzy.</p>
-                </li>
-                <li>
-                  <h4 data-id="Database dan Dashboard Monitoring Konsumsi Energi dan Emisi Karbon pada Gedung" data-en="Database & Dashboard for Building Energy Consumption & Carbon Emission Monitoring">Database dan Dashboard Monitoring Konsumsi Energi dan Emisi Karbon pada Gedung</h4>
-                  <p data-id="Pembuatan database menggunakan XAMPP menggunakan kode SQL, dan perhitungan emisi karbon berdasarkan jenis bahan bakar." data-en="Database creation using XAMPP with SQL, and calculating carbon emissions based on fuel types.">Pembuatan database menggunakan XAMPP menggunakan kode SQL, dan perhitungan emisi karbon berdasarkan jenis bahan bakar.</p>
-                </li>
-                <li>
-                  <h4 data-id="Papan Skor Berbasis IC TTL" data-en="TTL IC-Based Scoreboard">Papan Skor Berbasis IC TTL</h4>
-                  <p data-id="Pembuatan desain PCB dan melakukan simulasi rangkaian menggunakan proteus dan pembuatan PCB dengan proses etching." data-en="Designing PCB, simulating circuits using Proteus, and manufacturing PCBs via the etching process.">Pembuatan desain PCB dan melakukan simulasi rangkaian menggunakan proteus dan pembuatan PCB dengan proses etching.</p>
-                </li>
-                <li>
-                  <h4 data-id="Papan Pembelajaran Sistem Digital : Rangkaian Adder" data-en="Digital System Learning Board: Adder Circuit">Papan Pembelajaran Sistem Digital : Rangkaian Adder</h4>
-                  <p data-id="Perancangan dan simulasi menggunakan proteus dan melakukan troubleshooting rangkaian." data-en="Design and simulation using Proteus, along with circuit troubleshooting.">Perancangan dan simulasi menggunakan proteus dan melakukan troubleshooting rangkaian.</p>
-                </li>
-                <li>
-                  <h4 data-id="Power Supply Linear 5V dan Casingnya" data-en="5V Linear Power Supply & Enclosure">Power Supply Linear 5V dan Casingnya</h4>
-                  <p data-id="Perancangan dan simulasi menggunakan proteus dan pembuatan desain casing menggunakan autocad." data-en="Design and simulation using Proteus, and enclosure design using AutoCAD.">Perancangan dan simulasi menggunakan proteus dan pembuatan desain casing menggunakan autocad.</p>
-                </li>
-              </ul>
-            </div>
+        <article class="project">
+          <div>
+            <h3>[Monitoring Energi Listrik Berbasis IoT]</h3>
+            <div class="muted">[2025] · [Proyek individu]</div>
+            <div class="tags"><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">dashboard</span></div>
           </div>
+          <div>
+            <a href="assets/img/proyek-2.png" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-2.png" alt="Dokumentasi proyek 2" width="640" height="360" loading="lazy" />
+            </a>
+            <p><b>Masalah:</b> [Mis. pemakaian listrik sulit dipantau secara real time.]</p>
+            <p><b>Peran &amp; solusi:</b> [Mis. merakit sensor arus/tegangan, memprogram ESP32, mengirim data ke dashboard.]</p>
+            <p><b>Hasil:</b> [Mis. data tampil real time di ponsel dengan selisih ukur di bawah 3%.]</p>
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
+          </div>
+        </article>
 
-        </div>
-
+        <article class="project">
+          <div>
+            <h3>[Pengaturan Kecepatan Motor dengan Inverter]</h3>
+            <div class="muted">[2024] · [Tugas akhir / proyek semester]</div>
+            <div class="tags"><span class="tag">inverter</span><span class="tag">motor 3 fasa</span><span class="tag">PLC</span></div>
+          </div>
+          <div>
+            <a href="assets/img/proyek-3.png" target="_blank" rel="noopener">
+              <img class="project-img" src="assets/img/proyek-3.png" alt="Dokumentasi proyek 3" width="640" height="360" loading="lazy" />
+            </a>
+            <p><b>Masalah:</b> [Mis. kecepatan motor perlu diatur sesuai beban produksi.]</p>
+            <p><b>Peran &amp; solusi:</b> [Mis. mengatur parameter inverter dan membuat kontrol dari PLC.]</p>
+            <p><b>Hasil:</b> [Mis. kecepatan bisa diatur 0–1500 rpm dengan respon stabil.]</p>
+            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- ─── 7. KONTAK ─── -->
+    <!-- ─── KONTAK ─── -->
     <section id="kontak" class="section">
       <div class="container">
-        <div class="label" data-id="kontak" data-en="contact">kontak</div>
-        <h2 class="contact-head" data-id="terbuka untuk magang, kerja, dan kolaborasi." data-en="open for internships, work, and collaborations.">terbuka untuk magang,<br /><em>kerja, dan kolaborasi.</em></h2>
+        <div class="label">kontak</div>
+        <h2 class="contact-head">terbuka untuk magang,<br /><em>kerja, dan kolaborasi.</em></h2>
         <a href="mailto:wildanhandika231@gmail.com" class="contact-email">wildanhandika231@gmail.com</a>
         <div class="social">
-          <a href="https://wa.me/628570175426" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://github.com/wildanhandika231-bit" target="_blank" rel="noopener">github</a>
-          <a href="https://www.instagram.com/wldnhndk_/" target="_blank" rel="noopener">instagram</a>
+          <a href="[link-linkedin]">linkedin</a>
+          <a href="[link-github]">github</a>
+          <a href="[link-instagram]">instagram</a>
           <a href="assets/cv/CV_WILDAN.pdf">cv</a>
         </div>
       </div>
@@ -309,7 +377,7 @@
         <span>template oleh <a href="https://kayspace.vercel.app" target="_blank" rel="noopener">kayspace</a></span>
       </div>
     </footer>
-
+  
     <script src="js/script.js"></script>
   </body>
 </html>
