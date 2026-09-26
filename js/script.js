@@ -3,68 +3,119 @@
   const motion = root.classList.contains("js-anim");
   const $ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-  /* progress bar scroll */
+  /* ─── 1. PROGRESS BAR SCROLL ─── */
   const bar = document.querySelector(".progress");
   const onScroll = () => {
+    if (!bar) return;
     const h = root.scrollHeight - innerHeight;
     bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
   };
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* menu aktif sesuai bagian yang sedang dibaca */
+  /* ─── 2. SCROLLSPY (MENU AKTIF SESUAI BAGIAN) ─── */
   const links = $(".nav-links a");
   const spy = new IntersectionObserver(
     (es) => es.forEach((e) => {
-      if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+      if (e.isIntersecting) {
+        links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+      }
     }),
     { rootMargin: "-45% 0px -50% 0px" }
   );
   $("section[id]").forEach((sec) => spy.observe(sec));
 
-  /* gelombang sinyal (gambar statis, bergerak kalau animasi aktif) */
+  /* ─── 3. GELOMBANG SINYAL SVG ─── */
   const wave = (amp, period) => {
     let d = `M0 60 Q${period / 4} ${60 - amp} ${period / 2} 60`;
     for (let i = 2; i <= 1800 / (period / 2); i++) d += ` T${(i * period) / 2} 60`;
     return d;
   };
   const paths = $(".wave path");
-  paths[0].setAttribute("d", wave(34, 200));
-  paths[1].setAttribute("d", wave(20, 150));
+  if (paths.length >= 2) {
+    paths[0].setAttribute("d", wave(34, 200));
+    paths[1].setAttribute("d", wave(20, 150));
+  }
 
+  /* ─── 4. FITUR GANTI BAHASA (ID / EN) ─── */
+  let currentLang = "id";
+  const langToggleBtn = document.getElementById("lang-toggle");
+  const langLabel = document.getElementById("lang-label");
+
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener("click", () => {
+      currentLang = currentLang === "id" ? "en" : "id";
+      if (langLabel) langLabel.textContent = currentLang === "id" ? "EN" : "ID";
+
+      document.documentElement.lang = currentLang;
+
+      // Reset animasi typing agar langsung ganti bahasa
+      li = 0;
+      ci = 0;
+      del = false;
+
+      // Update semua elemen statis dengan data-id & data-en
+      $("[data-id][data-en]").forEach((el) => {
+        const translation = el.getAttribute(`data-${currentLang}`);
+        if (translation) el.innerText = translation;
+      });
+    });
+  }
+
+  /* ─── 5. ANIMASI (TYPEWRITER, MOUSE GLOW, COUNTER, REVEAL) ─── */
   if (!motion) return;
 
-  /* cahaya hijau mengikuti kursor di hero */
+  // Cahaya kursor di section Hero
   const hero = document.getElementById("beranda");
-  hero.addEventListener("pointermove", (e) => {
-    const r = hero.getBoundingClientRect();
-    hero.style.setProperty("--mx", e.clientX - r.left + "px");
-    hero.style.setProperty("--my", e.clientY - r.top + "px");
-  });
+  if (hero) {
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", e.clientX - r.left + "px");
+      hero.style.setProperty("--my", e.clientY - r.top + "px");
+    });
+  }
 
-  /* teks peran diketik bergantian */
+  // Running Text / Typewriter (HANYA NAMA DAN INSTANSI)
   const role = document.querySelector(".hero-role");
-  const lines = [
-    role.textContent,
-    "sistem monitoring dan instrumentasi berbasis sensor",
-    "otomasi industri: SCADA, PLC, dan DCS",
-    "tertarik di transmisi siaran dan operasional teknis",
-  ];
-  role.textContent = "";
-  role.classList.add("typing");
-  let li = 0, ci = 0, del = false;
-  const tick = () => {
-    const line = lines[li];
-    ci += del ? -1 : 1;
-    role.textContent = line.slice(0, ci);
-    let wait = del ? 22 : 48;
-    if (!del && ci === line.length) { del = true; wait = 1900; }
-    else if (del && ci === 0) { del = false; li = (li + 1) % lines.length; wait = 350; }
-    setTimeout(tick, wait);
+  const linesData = {
+    id: [
+      "Muhammad Wildan Handika",
+      "Politeknik Negeri Jakarta"
+    ],
+    en: [
+      "Muhammad Wildan Handika",
+      "Jakarta State Polytechnic"
+    ]
   };
-  setTimeout(tick, 800);
 
-  /* angka IPK naik dari 0 */
+  let li = 0, ci = 0, del = false;
+
+  if (role) {
+    role.textContent = "";
+    role.classList.add("typing");
+
+    const tick = () => {
+      const currentLines = linesData[currentLang];
+      const line = currentLines[li % currentLines.length];
+
+      ci += del ? -1 : 1;
+      role.textContent = line.slice(0, ci);
+
+      let wait = del ? 22 : 48;
+      if (!del && ci === line.length) {
+        del = true;
+        wait = 1900;
+      } else if (del && ci === 0) {
+        del = false;
+        li = (li + 1) % currentLines.length;
+        wait = 350;
+      }
+      setTimeout(tick, wait);
+    };
+    setTimeout(tick, 800);
+  }
+
+  // Count Up IPK
   const countUp = (n) => {
     const to = parseFloat(n.dataset.count), t0 = performance.now();
     const f = (t) => {
@@ -75,12 +126,13 @@
     f(t0);
   };
 
-  /* muncul pelan-pelan saat di-scroll */
+  // Scroll Reveal Animations
   $(".label, .sub, .profile-grid > div, .tl-item, .skill-col, .project, .contact-head, .contact-email, .social").forEach((el) => {
     el.classList.add("reveal");
     const sibs = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
     el.style.setProperty("--d", Math.min(sibs.indexOf(el) * 90, 360) + "ms");
   });
+
   const io = new IntersectionObserver(
     (es) => es.forEach((e) => {
       if (!e.isIntersecting) return;
@@ -90,5 +142,6 @@
     }),
     { threshold: 0.15 }
   );
+
   $(".reveal").forEach((el) => io.observe(el));
 })();
