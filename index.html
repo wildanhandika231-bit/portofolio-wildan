@@ -8,15 +8,10 @@
     <meta name="author" content="Muhammad Wildan Handika" />
     <meta name="theme-color" content="#0e0e0e" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Muhammad Wildan Handika — Elektronika Industri" />
-    <meta property="og:description" content="Portofolio mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta." />
-    <meta property="og:image" content="assets/img/og-image.png" />
-    <meta name="twitter:card" content="summary_large_image" />
     
     <style>
       body, button, input, select, textarea {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       }
       em {
         font-style: normal;
@@ -32,10 +27,10 @@
           grid-template-columns: 1fr;
         }
       }
-      /* Grid 2 Sertifikat Bergambar */
+      /* Sertifikat 1 Card */
       .cert-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: minmax(280px, 400px);
         gap: 1.5rem;
         margin-top: 1rem;
       }
@@ -80,6 +75,134 @@
       .cert-link:hover {
         text-decoration: underline;
       }
+
+      /* Styles Khusus Tampilan Proyek ala Screenshot */
+      .campus-card {
+        background: var(--surface, #161616);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .campus-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .campus-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+      }
+      .campus-info h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--accent, #f0ede8);
+        margin: 0;
+      }
+      .campus-info p {
+        font-size: 0.9rem;
+        color: var(--muted, #8a867e);
+        margin: 0.2rem 0 0.5rem;
+      }
+      .campus-badges {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted, #8a867e);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+      }
+      .badge-ipk {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.2);
+      }
+      .org-section {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .org-section-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #3b82f6;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .org-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .org-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+      .org-details h4 {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--text, #f0ede8);
+      }
+      .org-details .role {
+        font-size: 0.85rem;
+        color: #3b82f6;
+        margin: 0.1rem 0 0.3rem;
+      }
+      .org-details p {
+        font-size: 0.85rem;
+        color: var(--muted, #8a867e);
+        margin: 0;
+      }
+      .campus-projects-box {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.09));
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+      .project-list-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .project-list-items li {
+        margin-bottom: 1.25rem;
+      }
+      .project-list-items li:last-child {
+        margin-bottom: 0;
+      }
+      .project-list-items h4 {
+        font-size: 0.95rem;
+        color: var(--text, #f0ede8);
+        margin: 0 0 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .project-list-items h4::before {
+        content: "•";
+        color: var(--text, #f0ede8);
+      }
+      .project-list-items p {
+        font-size: 0.85rem;
+        color: var(--muted, #8a867e);
+        margin: 0 0 0 1rem;
+      }
     </style>
 
     <link rel="stylesheet" href="css/style.css" />
@@ -107,9 +230,13 @@
       <div class="glow" aria-hidden="true"></div>
       <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path /><path /></svg>
       <div class="container hero">
-        <p class="greeting">Halo, saya</p>
+        <p class="greeting">halo, saya</p>
         <h1 class="hero-title">Muhammad<br /><em>Wildan Handika.</em></h1>
-        <p class="hero-role">Mahasiswa Elektronika Industri • Otomasi Industri • Instrumentasi • Sistem Kontrol • IoT</p>
+        <p class="hero-role">Saya mahasiswa D3 Elektronika Industri, Politeknik Negeri Jakarta</p>
+        <p class="hero-desc">
+          yang memiliki ketertarikan pada bidang elektronika dasar, sistem kelistrikan, dan troubleshooting peralatan,
+          dengan pengalaman di sistem monitoring dan instrumentasi berbasis sensor. Saya senang mempelajari sesuatu hal yang baru dalam elektronika.
+        </p>
         <div class="actions">
           <a href="#proyek" class="btn btn-main">lihat proyek</a>
           <a href="#kontak" class="btn">hubungi saya</a>
@@ -136,14 +263,7 @@
           </div>
           <div>
             <p class="about-p">
-              <span>Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta</span>
-
-Saya merupakan mahasiswa Program Studi Teknik Elektronika Industri di Politeknik Negeri Jakarta yang memiliki ketertarikan pada bidang elektronika, sistem kontrol, instrumentasi, serta teknologi yang diterapkan dalam dunia industri. Selama menempuh pendidikan, saya mempelajari dasar-dasar elektronika dan kelistrikan, sistem kontrol, sensor dan instrumentasi, pemrograman mikrokontroler, serta sistem otomasi industri.
-
-Saya juga memiliki pengalaman dalam melakukan perancangan, perakitan, pengujian, dan troubleshooting rangkaian elektronika serta pengembangan sistem berbasis mikrokontroler. Selain kemampuan teknis, saya terbiasa bekerja secara teliti, bertanggung jawab, mampu bekerja sama dalam tim, dan memiliki kemauan untuk mempelajari hal-hal baru.
-
-Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah diperoleh selama perkuliahan ke dalam lingkungan kerja secara langsung, sekaligus meningkatkan kemampuan teknis dan pemahaman mengenai sistem serta prosedur kerja di dunia industri.
-
+              <span>Mahasiswa Elektronika Industri di Politeknik Negeri Jakarta</span>.
             </p>
           </div>
         </div>
@@ -196,14 +316,16 @@ Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah dipe
 
           <!-- Kolom 2 -->
           <div>
-            <div class="sub">masa smk (PKL)</div>
+            <div class="sub">masa kuliah (magang)</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date">Juni 2023 – Agustus 2023</div>
-                <h3 class="tl-title">Maintenance Listrik Produksi</h3>
-                <div class="tl-org muted">PT KAHAPTEX, Gunung Putri,Bogor</div>
+                <div class="tl-date">Agustus 2026 – Desember 2026</div>
+                <h3 class="tl-title">OJT Facility Maintenance</h3>
+                <div class="tl-org muted">PT Angkasa Pura Indonesia, Bandara Halim Perdanakusuma</div>
                 <ul class="tl-list">
-                  <li>Tugas utama: Merawat Panel Listrik, motor listrik(3 phase), inverter ).</li>
+                  <li>Tugas utama: Kegiatan preventive maintenance X-RAY &amp; WTMD (Walk Through Metal Detector).</li>
+                  <li>Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK.</li>
+                  <li>Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV.</li>
                 </ul>
               </div>
             </div>
@@ -211,32 +333,15 @@ Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah dipe
 
           <!-- Kolom 3 -->
           <div>
-            <div class="sub">masa kuliah (magang)</div>
+            <div class="sub">pengalaman / proyek lainnya</div>
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-date">[Agustus 2026 – Desember 2026]</div>
-                <h3 class="tl-title">JT Facility Maintenance</h3>
-                <div class="tl-org muted">PT Angkasa Pura Indonesia, Bandara Halim Perdanakusuma</div>
+                <div class="tl-date">[Bulan 20XX – Bulan 20XX]</div>
+                <h3 class="tl-title">[Nama Posisi / Peran]</h3>
+                <div class="tl-org muted">[Nama Perusahaan / Organisasi], [Kota]</div>
                 <ul class="tl-list">
-                 <li>Tugas utama: Kegiatan preventive maintenance X-RAY &amp; WTMD (Walk Through Metal Detector).</li>
-                  <li>Pengecekan harian peralatan elektronika dan IT di area Bandara Halim PK.</li>
-                  <li>Melakukan pengecekan resolusi dan konfigurasi resolusi pada CCTV.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        <!-- Kolom 4 -->
-          <div>
-            <div class="sub">pengalaman kerja(freelance)</div>
-            <div class="timeline">
-              <div class="tl-item">
-                <div class="tl-date">[Januari 2026 – Februari 2026]</div>
-                <h3 class="tl-title">Freelance</h3>
-                <div class="tl-org muted">PT PT. Corsys Integrasi Internasional (CoreSystem), Cimanggis, Depok</div>
-                <ul class="tl-list">
-                 <li>Tugas utama: Menjadi HSE(Health, Safety, and Environment).</li>
-                  <li>mengelola kebijakan prosedur dan mengawasi proyek untuk melindungi kesehatan, keselamatan, keamanan pekerja, 
-                    serta menjaga kelestarian lingkungan di tempat kerja.</li>
+                  <li>[Tugas atau tanggung jawab utama kamu di sini.]</li>
+                  <li>[Hasil atau capaian yang diperoleh.]</li>
                 </ul>
               </div>
             </div>
@@ -245,7 +350,7 @@ Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah dipe
       </div>
     </section>
 
-    <!-- ─── 5. BIDANG KEAHLIAN & SERTIFIKASI (2 SERTIFIKAT) ─── -->
+    <!-- ─── 5. BIDANG KEAHLIAN & SERTIFIKASI (1 SERTIFIKAT) ─── -->
     <section id="keahlian" class="section">
       <div class="container">
         <div class="label">bidang keahlian</div>
@@ -278,64 +383,100 @@ Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah dipe
               <li>Manajemen waktu</li>
             </ul>
           </div>
-       </div>
+
+          <!-- Bagian Sertifikasi (1 Kartu) -->
+          <div class="skill-col" style="grid-column: 1 / -1">
+            <h3>sertifikasi &amp; pelatihan</h3>
+            <div class="cert-grid">
+              
+              <div class="cert-card">
+                <a href="assets/img/sertifikat-1.png" target="_blank" rel="noopener">
+                  <img class="cert-img" src="assets/img/sertifikat-1.png" alt="Sertifikat 1" loading="lazy" />
+                </a>
+                <div class="cert-title">BNSP: Rekayasa Integrasi Bangunan Cerdas</div>
+                <div class="cert-issuer">Badan Nasional Sertifikasi Profesi</div>
+                <a href="assets/img/sertifikat-1.png" target="_blank" rel="noopener" class="cert-link">
+                  Lihat Bukti Sertifikat ↗
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ─── 6. PROYEK (PNG) ─── -->
+    <!-- ─── 6. PROYEK KAMPUS (BERDASARKAN TAMPILAN SS) ─── -->
     <section id="proyek" class="section">
       <div class="container">
-        <div class="label">proyek yang telah diselesaikan</div>
+        <div class="label">proyek &amp; interaksi kampus</div>
 
-        <article class="project">
-          <div>
-            <h3>[Sistem Konveyor Sortir Otomatis]</h3>
-            <div class="muted">[2025] · [Proyek kuliah / tim 3 orang]</div>
-            <div class="tags"><span class="tag">PLC</span><span class="tag">HMI</span><span class="tag">sensor</span></div>
+        <div class="campus-card">
+          <!-- Header Kampus -->
+          <div class="campus-header">
+            <img class="campus-logo" src="assets/img/logo-pnj.png" alt="Logo PNJ" />
+            <div class="campus-info">
+              <h2>Politeknik Negeri Jakarta</h2>
+              <p>Teknik Elektronika Industri</p>
+              <div class="campus-badges">
+                <span class="badge">📅 2024 - sekarang</span>
+                <span class="badge badge-ipk">🔖 IPK: 3.63</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <a href="assets/img/proyek-1.png" target="_blank" rel="noopener">
-              <img class="project-img" src="assets/img/proyek-1.png" alt="Dokumentasi proyek 1" width="640" height="360" loading="lazy" />
-            </a>
-            <p><b>Masalah:</b> [Apa yang ingin diselesaikan, mis. memilah barang berdasarkan jenis secara otomatis.]</p>
-            <p><b>Peran &amp; solusi:</b> [Apa yang kamu kerjakan, mis. merancang wiring, memprogram ladder, membuat tampilan HMI.]</p>
-            <p><b>Hasil:</b> [Angka atau bukti, mis. akurasi sortir 95%, dokumentasi lengkap.]</p>
-            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
-          </div>
-        </article>
 
-        <article class="project">
-          <div>
-            <h3>[Monitoring Energi Listrik Berbasis IoT]</h3>
-            <div class="muted">[2025] · [Proyek individu]</div>
-            <div class="tags"><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">dashboard</span></div>
+          <!-- Pengalaman Organisasi -->
+          <div class="org-section">
+            <div class="org-section-title">
+              <span>👥</span> PENGALAMAN ORGANISASI
+            </div>
+            <div class="org-card">
+              <img class="org-logo" src="assets/img/logo-ksm.png" alt="KSM Psychorobotic" />
+              <div class="org-details">
+                <h4>KSM Psychorobotic</h4>
+                <div class="role">Staff</div>
+                <p>Merekrut anggota yang akan mengikuti perlombaan</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <a href="assets/img/proyek-2.png" target="_blank" rel="noopener">
-              <img class="project-img" src="assets/img/proyek-2.png" alt="Dokumentasi proyek 2" width="640" height="360" loading="lazy" />
-            </a>
-            <p><b>Masalah:</b> [Mis. pemakaian listrik sulit dipantau secara real time.]</p>
-            <p><b>Peran &amp; solusi:</b> [Mis. merakit sensor arus/tegangan, memprogram ESP32, mengirim data ke dashboard.]</p>
-            <p><b>Hasil:</b> [Mis. data tampil real time di ponsel dengan selisih ukur di bawah 3%.]</p>
-            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
-          </div>
-        </article>
 
-        <article class="project">
-          <div>
-            <h3>[Pengaturan Kecepatan Motor dengan Inverter]</h3>
-            <div class="muted">[2024] · [Tugas akhir / proyek semester]</div>
-            <div class="tags"><span class="tag">inverter</span><span class="tag">motor 3 fasa</span><span class="tag">PLC</span></div>
+          <!-- Proyek Kampus -->
+          <div class="org-section" style="margin-bottom: 0;">
+            <div class="org-section-title">
+              <span>📁</span> PROYEK KAMPUS
+            </div>
+            <div class="campus-projects-box">
+              <ul class="project-list-items">
+                <li>
+                  <h4>Sistem Antrian Berbasis Arduino</h4>
+                  <p>Mengintegrasikan 8-bit priority encoder dan display TM1637 untuk pencetak nomor antrean.</p>
+                </li>
+                <li>
+                  <h4>Oven Fermentasi Pintar Berbasis PID dan Fuzzy</h4>
+                  <p>Merancang skematik dan tata letak PCB menggunakan KiCAD, Serta pembuatan dan tunning firmware kontroller PID dan Fuzzy.</p>
+                </li>
+                <li>
+                  <h4>Database dan Dashboard Monitoring Konsumsi Energi dan Emisi Karbon pada Gedung</h4>
+                  <p>Pembuatan database menggunakan XAMPP menggunakan kode SQL, dan perhitungan emisi karbon berdasarkan jenis bahan bakar.</p>
+                </li>
+                <li>
+                  <h4>Papan Skor Berbasis IC TTL</h4>
+                  <p>Pembuatan desain PCB dan melakukan simulasi rangkaian menggunakan proteus dan pembuatan PCB dengan proses etching.</p>
+                </li>
+                <li>
+                  <h4>Papan Pembelajaran Sistem Digital : Rangkaian Adder</h4>
+                  <p>Perancangan dan simulasi menggunakan proteus dan melakukan troubleshooting rangkaian.</p>
+                </li>
+                <li>
+                  <h4>Power Supply Linear 5V dan Casingnya</h4>
+                  <p>Perancangan dan simulasi menggunakan proteus dan pembuatan desain casing menggunakan autocad.</p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <a href="assets/img/proyek-3.png" target="_blank" rel="noopener">
-              <img class="project-img" src="assets/img/proyek-3.png" alt="Dokumentasi proyek 3" width="640" height="360" loading="lazy" />
-            </a>
-            <p><b>Masalah:</b> [Mis. kecepatan motor perlu diatur sesuai beban produksi.]</p>
-            <p><b>Peran &amp; solusi:</b> [Mis. mengatur parameter inverter dan membuat kontrol dari PLC.]</p>
-            <p><b>Hasil:</b> [Mis. kecepatan bisa diatur 0–1500 rpm dengan respon stabil.]</p>
-            <a href="[link-video-atau-github]" target="_blank" rel="noopener">lihat dokumentasi lengkap ↗</a>
-          </div>
-        </article>
+
+        </div>
+
       </div>
     </section>
 
@@ -346,9 +487,9 @@ Melalui kegiatan magang ini, saya berharap dapat menerapkan ilmu yang telah dipe
         <h2 class="contact-head">terbuka untuk magang,<br /><em>kerja, dan kolaborasi.</em></h2>
         <a href="mailto:wildanhandika231@gmail.com" class="contact-email">wildanhandika231@gmail.com</a>
         <div class="social">
-          <a href="[https://www.tiktok.com/@wildanasikuning]">tiktok</a>
-          <a href="[https://wa.me/6285770175436]">whatsapp</a>
-          <a href="[https://www.instagram.com/wldnhndk_/]">instagram</a>
+          <a href="[link-linkedin]">linkedin</a>
+          <a href="[link-github]">github</a>
+          <a href="[link-instagram]">instagram</a>
           <a href="assets/cv/CV_WILDAN.pdf">cv</a>
         </div>
       </div>
